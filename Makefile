@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gpaeng <gpaeng@student.42.fr>              +#+  +:+       +#+         #
+#    By: chahan <hgdst14@naver.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/05 12:11:44 by gpaeng            #+#    #+#              #
-#    Updated: 2021/08/02 21:17:49 by gpaeng           ###   ########.fr        #
+#    Created: 2022/05/07 16:54:00 by chahan            #+#    #+#              #
+#    Updated: 2022/05/07 16:54:03 by chahan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wextra -Werror -Wall
+CFLAGS = -Wextra -Werror -Wall -fsanitize=thread -g
 CFLAGS += -g
 
 NAME = philo
@@ -43,7 +43,7 @@ clean:
 	rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(OBJS) $(NAME)
 
 re: fclean all
 

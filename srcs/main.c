@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaeng <gpaeng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: chahan <hgdst14@naver.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/01 12:20:43 by gpaeng            #+#    #+#             */
-/*   Updated: 2021/08/03 15:21:15 by gpaeng           ###   ########.fr       */
+/*   Created: 2022/05/07 16:51:40 by chahan            #+#    #+#             */
+/*   Updated: 2022/05/07 16:51:45 by chahan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	main(int argc, char *argv[])
 {
-	t_game	game;
+	t_table	table;
 
 	if (argc != 5 && argc != 6)
-		return (ft_error("[Error] check argc"));
-	if (ft_philo_input(&game, argv, argc))
-		return (ft_error("[Error] check philo input"));
-	if (ft_philo_start(&game, (&game)->philo))
+		return (ft_error("[Error] number of argc is not fitted"));
+	// 입력된 값을 확인
+	if (ft_philo_input(&table, argv, argc))
+		return (ft_error("[Error] error in parameter"));
+	// 철학자 문제 시작
+	if (ft_philo_start(&table, (&table)->philo))
 		return (ft_error("[Error] check philo start"));
 	return (0);
 }

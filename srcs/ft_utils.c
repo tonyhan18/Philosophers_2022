@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaeng <gpaeng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: chahan <hgdst14@naver.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/01 13:26:58 by gpaeng            #+#    #+#             */
-/*   Updated: 2021/08/03 15:16:20 by gpaeng           ###   ########.fr       */
+/*   Created: 2022/05/07 16:52:09 by chahan            #+#    #+#             */
+/*   Updated: 2022/05/07 16:52:11 by chahan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ int	ft_error(char *s)
 	return (-1);
 }
 
-void	ft_printf(t_game *game, char *str, int id)
+void	ft_printf(t_table *table, char *str, int id)
 {
-	pthread_mutex_lock(&(game->write));
-	if (!(game->die))
+	pthread_mutex_lock(&(table->write));
+	if (!(table->die))
 	{
-		printf("%lld ", ft_time() - game->start_time);
+		printf("%lld ms ", ft_time() - table->start_time);
 		printf("%d ", id + 1);
 		printf("%s\n", str);
 	}
-	pthread_mutex_unlock(&(game->write));
+	pthread_mutex_unlock(&(table->write));
 	return ;
 }

@@ -3,78 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaeng <gpaeng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: chahan <hgdst14@naver.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/01 14:17:50 by gpaeng            #+#    #+#             */
-/*   Updated: 2021/08/03 15:13:33 by gpaeng           ###   ########.fr       */
+/*   Created: 2022/05/07 16:52:45 by chahan            #+#    #+#             */
+/*   Updated: 2022/05/07 16:52:49 by chahan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	ft_mutex_init(t_game *game)
+int	ft_mutex_init(t_table *table)
 {
 	int	idx;
 
-	if (pthread_mutex_init(&(game->write), NULL))
+	if (pthread_mutex_init(&(table->write), NULL))
 		return (-1);
-	if (pthread_mutex_init(&(game->eating), NULL))
+	if (pthread_mutex_init(&(table->eating), NULL))
 		return (-1);
-	game->forks = malloc(sizeof(pthread_mutex_t) * game->philo_num);
-	if (!(game->forks))
+	table->forks = malloc(sizeof(pthread_mutex_t) * table->philo_num);
+	if (!(table->forks))
 		return (-1);
 	idx = 0;
-	while (idx < game->philo_num)
+	while (idx < table->philo_num)
 	{
-		if (pthread_mutex_init(&(game->forks[idx]), NULL))
+		if (pthread_mutex_init(&(table->forks[idx]), NULL))
 			return (-1);
 		idx++;
 	}
 	return (0);
 }
 
-int	ft_philo_init(t_game *game)
+int	ft_philo_init(t_table *table)
 {
 	int	idx;
 
 	idx = 0;
-	game->philo = malloc(sizeof(t_game) * game->philo_num);
-	if (!(game->philo))
+	table->philo = malloc(sizeof(t_table) * table->philo_num);
+	if (!(table->philo))
 		return (-1);
-	while (idx < game->philo_num)
+	while (idx < table->philo_num)
 	{
-		game->philo[idx].id = idx;
-		game->philo[idx].left_fork = idx;
-		game->philo[idx].right_fork = (idx + 1) % game->philo_num;
-		game->philo[idx].check_d_time = 0;
-		game->philo[idx].eat_cnt = 0;
-		game->philo[idx].game = game;
+		table->philo[idx].id = idx;
+		table->philo[idx].left_fork = idx;
+		table->philo[idx].right_fork = (idx + 1) % table->philo_num;
+		table->philo[idx].check_dead_time = 0;
+		table->philo[idx].eat_cnt = 0;
+		table->philo[idx].table = table;
 		idx++;
 	}
 	return (0);
 }
 
-int	ft_philo_input(t_game *game, char *argv[], int argc)
+int	ft_philo_input(t_table *table, char *argv[], int argc)
 {
-	game->philo_num = ft_atoi(argv[1]);
-	game->time_to_die = ft_atoi(argv[2]);
-	game->time_to_eat = ft_atoi(argv[3]);
-	game->time_to_sleep = ft_atoi(argv[4]);
-	game->must_eat_num = 0;
-	game->die = 0;
-	game->eat_check = 0;
-	game->start_time = 0;
-	if (ft_check_init(game))
+	table->philo_num = ft_atoi(argv[1]);
+	table->time_to_die = ft_atoi(argv[2]);
+	table->time_to_eat = ft_atoi(argv[3]);
+	table->time_to_sleep = ft_atoi(argv[4]);
+	table->must_eat_num = 0;
+	table->die = 0;
+	table->eat_check = 0;
+	table->start_time = 0;
+	if (ft_check_init(table))
 		return (-1);
 	if (argc == 6)
 	{
-		game->must_eat_num = ft_atoi(argv[5]);
-		if (game->must_eat_num <= 0)
+		table->must_eat_num = ft_atoi(argv[5]);
+		if (table->must_eat_num <= 0)
 			return (-1);
 	}
-	if (ft_mutex_init(game))
+	if (ft_mutex_init(table))
 		return (-1);
-	if (ft_philo_init(game))
+	if (ft_philo_init(table))
 		return (-1);
 	return (0);
 }

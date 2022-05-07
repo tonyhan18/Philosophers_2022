@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaeng <gpaeng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: chahan <hgdst14@naver.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/02 21:07:17 by gpaeng            #+#    #+#             */
-/*   Updated: 2021/08/03 13:14:26 by gpaeng           ###   ########.fr       */
+/*   Created: 2022/05/07 16:52:24 by chahan            #+#    #+#             */
+/*   Updated: 2022/05/07 16:52:27 by chahan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ long long	ft_time(void)
 	return (ms);
 }
 
-void	ft_sleeping_time(t_game *game)
+void	ft_sleeping_time(t_table *table)
 {
 	long long	sleep_time;
 	long long	start_s_time;
 	long long	now_s_time;
 
-	sleep_time = (long long)(game->time_to_sleep);
+	sleep_time = (long long)(table->time_to_sleep);
 	start_s_time = ft_time();
-	while (!(game->die))
+	while (!(table->die))
 	{
 		now_s_time = ft_time();
 		if ((now_s_time - start_s_time) >= sleep_time)
@@ -39,15 +39,15 @@ void	ft_sleeping_time(t_game *game)
 	}
 }
 
-void	ft_eating_time(t_game *game)
+void	ft_eating_time(t_table *table)
 {
 	long long	eat_time;
 	long long	start_e_time;
 	long long	now_e_time;
 
-	eat_time = (long long)(game->time_to_eat);
+	eat_time = (long long)(table->time_to_eat);
 	start_e_time = ft_time();
-	while (!(game->die))
+	while (!(table->die))
 	{
 		now_e_time = ft_time();
 		if ((now_e_time - start_e_time) >= eat_time)
