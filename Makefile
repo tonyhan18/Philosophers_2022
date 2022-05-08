@@ -11,8 +11,7 @@
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wextra -Werror -Wall -fsanitize=thread -g
-CFLAGS += -g
+CFLAGS = -Wextra -Werror -Wall -g
 
 NAME = philo
 
