@@ -18,10 +18,8 @@ int	main(int argc, char *argv[])
 
 	if (argc != 5 && argc != 6)
 		return (ft_error("[Error] number of argc is not fitted"));
-	// 입력된 값을 확인
 	if (ft_philo_input(&table, argv, argc))
 		return (ft_error("[Error] error in parameter"));
-	// 철학자 문제 시작
 	if (ft_philo_start(&table, (&table)->philo))
 		return (ft_error("[Error] check philo start"));
 	return (0);

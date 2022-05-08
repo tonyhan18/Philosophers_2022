@@ -18,7 +18,8 @@ int	ft_check_init(t_table *table)
 		|| table-> time_to_die < 60 || table->time_to_eat < 60
 		|| table->time_to_sleep < 60)
 		return (-1);
-	if  (table->philo_num == -1 || table->time_to_die == -1 || table->time_to_eat == -1 || table->time_to_sleep == -1)
+	if (table->philo_num == -1 || table->time_to_die == -1
+		|| table->time_to_eat == -1 || table->time_to_sleep == -1)
 		return (-1);
 	return (0);
 }

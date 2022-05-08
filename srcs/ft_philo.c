@@ -26,6 +26,10 @@ int	ft_philo_do(t_table *table, t_philo *philo)
 {
 	pthread_mutex_lock(&(table->forks[philo->left_fork]));
 	ft_printf(table, "has taken a fork", philo->id);
+	if (philo->left_fork == philo->right_fork)
+	{
+		return (-1);
+	}
 	pthread_mutex_lock(&(table->forks[philo->right_fork]));
 	ft_printf(table, "has taken a fork", philo->id);
 	ft_philo_eat(philo->table, philo);

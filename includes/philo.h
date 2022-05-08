@@ -48,36 +48,36 @@ typedef struct s_table
 	t_philo			*philo;
 }				t_table;
 
-int	ft_isdigit(int c);
-int	chk_arg_length(char *arg);
-int	is_numeric(char *arg);
-int	check_arg(char *arg);
-int	ft_atoif(char *arg);
+int				ft_isdigit(int c);
+int				chk_arg_length(char *arg);
+int				is_numeric(char *arg);
+int				check_arg(char *arg);
+int				ft_atoif(char *arg);
 
-int			ft_isspace(char c);
-int			ft_atoi(char *str);
-int			ft_error(char *s);
-void		ft_printf(t_table *game, char *str, int id);
+int				ft_isspace(char c);
+int				ft_atoi(char *str);
+int				ft_error(char *s);
+void			ft_printf(t_table *table, char *str, int id);
 
-long long	ft_time(void);
-void		ft_sleeping_time(t_table *game);
-void		ft_eating_time(t_table *game);
+long long		ft_time(void);
+void			ft_sleeping_time(t_table *table);
+void			ft_eating_time(t_table *table);
 
-void		ft_eat_check(t_table *game, t_philo *philo);
-void		ft_death_check(t_table *game, t_philo *philo);
-int			ft_check_init(t_table *game);
+void			ft_eat_check(t_table *table, t_philo *philo);
+void			ft_death_check(t_table *table, t_philo *philo);
+int				ft_check_init(t_table *table);
 
-int			ft_mutex_init(t_table *game);
-int			ft_philo_input(t_table *game, char *argv[], int argc);
-int			ft_philo_init(t_table *game);
+int				ft_mutex_init(t_table *table);
+int				ft_philo_input(t_table *table, char *argv[], int argc);
+int				ft_philo_init(t_table *table);
 
-void		ft_philo_eat(t_table *game, t_philo *philo);
-int			ft_philo_do(t_table *game, t_philo *philo);
-void		*ft_pthread(void *philo);
-void		ft_end_philo(t_table *game, t_philo *philo);
-int			ft_philo_start(t_table *game, t_philo *philo);
-void		ft_after_eating(t_table *game, t_philo *philo);
+void			ft_philo_eat(t_table *table, t_philo *philo);
+int				ft_philo_do(t_table *table, t_philo *philo);
+void			*ft_pthread(void *philo);
+void			ft_end_philo(t_table *table, t_philo *philo);
+int				ft_philo_start(t_table *table, t_philo *philo);
+void			ft_after_eating(t_table *table, t_philo *philo);
 
-int			main(int argc, char *argv[]);
+int				main(int argc, char *argv[]);
 
 #endif
