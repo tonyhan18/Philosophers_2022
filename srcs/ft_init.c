@@ -56,10 +56,10 @@ int	ft_philo_init(t_table *table)
 
 int	ft_philo_input(t_table *table, char *argv[], int argc)
 {
-	table->philo_num = ft_atoi(argv[1]);
-	table->time_to_die = ft_atoi(argv[2]);
-	table->time_to_eat = ft_atoi(argv[3]);
-	table->time_to_sleep = ft_atoi(argv[4]);
+	table->philo_num = ft_atoif(argv[1]);
+	table->time_to_die = ft_atoif(argv[2]);
+	table->time_to_eat = ft_atoif(argv[3]);
+	table->time_to_sleep = ft_atoif(argv[4]);
 	table->must_eat_num = 0;
 	table->die = 0;
 	table->eat_check = 0;
@@ -68,7 +68,7 @@ int	ft_philo_input(t_table *table, char *argv[], int argc)
 		return (-1);
 	if (argc == 6)
 	{
-		table->must_eat_num = ft_atoi(argv[5]);
+		table->must_eat_num = ft_atoif(argv[5]);
 		if (table->must_eat_num <= 0)
 			return (-1);
 	}

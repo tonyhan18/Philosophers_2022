@@ -20,7 +20,8 @@ DIR_H = ./includes/
 DIR_S = ./srcs/
 DIR_O = ./
 
-SRC =	ft_utils.c	\
+SRC =	ft_atoif.c \
+		ft_utils.c	\
 		ft_time.c	\
 		ft_check.c	\
 		ft_init.c	\

@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <sys/time.h>
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 typedef struct s_philo
 {
@@ -45,6 +47,12 @@ typedef struct s_table
 	pthread_mutex_t	write;
 	t_philo			*philo;
 }				t_table;
+
+int	ft_isdigit(int c);
+int	chk_arg_length(char *arg);
+int	is_numeric(char *arg);
+int	check_arg(char *arg);
+int	ft_atoif(char *arg);
 
 int			ft_isspace(char c);
 int			ft_atoi(char *str);
